@@ -13,10 +13,10 @@ __doc__ = "serializers"
 
 from .models import *
 from rest_framework import viewsets
-from xy_admin_model_serializer.Admin_ModelSerializer import *
+from xy_django_serializer.serializers import Serializer
 
 
-class SImage(Admin_ModelSerializer):
+class SImage(Serializer):
     image_url = serializers.ReadOnlyField()
     default_value = ""
     default_value_map = {
@@ -35,7 +35,7 @@ class VSImage(viewsets.ModelViewSet):
     serializer_class = SImage
 
 
-class SImageCollection(Admin_ModelSerializer):
+class SImageCollection(Serializer):
     default_value = ""
 
     class Meta:
@@ -48,7 +48,7 @@ class VSImageCollection(viewsets.ModelViewSet):
     serializer_class = SImageCollection
 
 
-class SPDF(Admin_ModelSerializer):
+class SPDF(Serializer):
     default_value = ""
 
     class Meta:
@@ -61,7 +61,7 @@ class VSPDF(viewsets.ModelViewSet):
     serializer_class = SPDF
 
 
-class SPDFCollection(Admin_ModelSerializer):
+class SPDFCollection(Serializer):
     default_value = ""
 
     class Meta:
@@ -74,7 +74,7 @@ class VSPDFCollection(viewsets.ModelViewSet):
     serializer_class = SPDFCollection
 
 
-class SPackage(Admin_ModelSerializer):
+class SPackage(Serializer):
     default_value = ""
 
     class Meta:
@@ -87,7 +87,7 @@ class VSPackage(viewsets.ModelViewSet):
     serializer_class = SPackage
 
 
-class SPackageCollection(Admin_ModelSerializer):
+class SPackageCollection(Serializer):
     default_value = ""
 
     class Meta:
@@ -100,7 +100,7 @@ class VSPackageCollection(viewsets.ModelViewSet):
     serializer_class = SPackageCollection
 
 
-class SRequest(Admin_ModelSerializer):
+class SRequest(Serializer):
     default_value = ""
 
     class Meta:
@@ -113,7 +113,7 @@ class VSRequest(viewsets.ModelViewSet):
     serializer_class = SRequest
 
 
-class SResponse(Admin_ModelSerializer):
+class SResponse(Serializer):
     default_value = ""
 
     class Meta:
@@ -126,7 +126,7 @@ class VSResponse(viewsets.ModelViewSet):
     serializer_class = SResponse
 
 
-class SHTMLFile(Admin_ModelSerializer):
+class SHTMLFile(Serializer):
     default_value = ""
 
     class Meta:
@@ -139,7 +139,7 @@ class VSHTMLFile(viewsets.ModelViewSet):
     serializer_class = SHTMLFile
 
 
-class SVideoCollection(Admin_ModelSerializer):
+class SVideoCollection(Serializer):
     default_value = ""
 
     class Meta:
@@ -152,7 +152,7 @@ class VSVideoCollection(viewsets.ModelViewSet):
     serializer_class = SVideoCollection
 
 
-class SVideo(Admin_ModelSerializer):
+class SVideo(Serializer):
     default_value = ""
 
     class Meta:
@@ -165,7 +165,7 @@ class VSVideo(viewsets.ModelViewSet):
     serializer_class = SVideo
 
 
-class SAudioCollection(Admin_ModelSerializer):
+class SAudioCollection(Serializer):
     default_value = ""
 
     class Meta:
@@ -178,7 +178,7 @@ class VSAudioCollection(viewsets.ModelViewSet):
     serializer_class = SAudioCollection
 
 
-class SAudio(Admin_ModelSerializer):
+class SAudio(Serializer):
     default_value = ""
 
     class Meta:
@@ -191,7 +191,7 @@ class VSAudio(viewsets.ModelViewSet):
     serializer_class = SAudio
 
 
-class STextCollection(Admin_ModelSerializer):
+class STextCollection(Serializer):
     default_value = ""
 
     class Meta:
@@ -204,7 +204,7 @@ class VSTextCollection(viewsets.ModelViewSet):
     serializer_class = STextCollection
 
 
-class SText(Admin_ModelSerializer):
+class SText(Serializer):
     default_value = ""
 
     class Meta:
