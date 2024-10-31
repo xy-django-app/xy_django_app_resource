@@ -73,7 +73,7 @@ class MImage(MAImage):
         app_label = "xy_django_app_resource"
 
 
-class PackageCollection(MAPackageCollection):
+class MPackageCollection(MAPackageCollection):
     packages = models.ManyToManyField(
         "xy_django_app_resource.MPackage",
         verbose_name=_("包"),
@@ -101,7 +101,7 @@ class PackageCollection(MAPackageCollection):
         app_label = "xy_django_app_resource"
 
 
-class Package(MAPackage):
+class MPackage(MAPackage):
     region = models.ForeignKey(
         "xy_django_app_information.MRegion",
         verbose_name=_("位置"),

@@ -8,12 +8,14 @@ requires-python = ">=3.11.3"
 
 name = "xy_django_app_resource"
 
-authors = [{ name = "helios", email = "yuyang.0515@qq.com" }]
+authors = [{ name = "余洋", email = "yuyangit.0515@qq.com" }]
 description = "资源数据模型"
 
-dynamic = ["version", "readme"]
+dynamic = ["version"]
 
-classifiers = ["Programming Language :: Python :: 3.11.3"]
+readme = "README.md"
+
+classifiers = ["Programming Language :: Python :: 3"]
 
 dependencies = [
     "django",
@@ -21,7 +23,7 @@ dependencies = [
     "xy_type",
     "xy_string",
     "xy_django_model",
-    "xy_admin_model_serializer",
+    "xy_django_serializer",
     "xy_django_app_information",
 ]
 
@@ -39,4 +41,3 @@ include-package-data = true
 
 [tool.setuptools.dynamic]
 version = { file = "VERSION" }
-readme = { file = ["README.rst", "USAGE.rst", "README.md", "USAGE.md"] }

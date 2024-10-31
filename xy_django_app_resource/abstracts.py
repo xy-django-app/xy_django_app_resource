@@ -1,12 +1,12 @@
 # -*- coding: UTF-8 -*-
-__author__ = "helios"
+__author__ = "余洋"
 __doc__ = "abstracts"
 """
   * @File    :   abstracts.py
   * @Time    :   2023/05/01 20:04:42
   * @Author  :   helios
   * @Version :   1.0
-  * @Contact :   yuyang.0515@qq.com
+  * @Contact :   yuyangit.0515@qq.com
   * @License :   (C)Copyright 2019-2023, Ship of Ocean
   * @Desc    :   None
 """
@@ -22,8 +22,18 @@ from xy_django_model.model import gen_upload_to
 class MAPDFCollection(models.Model):
     id = models.BigAutoField(primary_key=True)
 
-    name = models.CharField(verbose_name=_("名称"), max_length=300, null=True, blank=True)
-    code = models.CharField(verbose_name=_("编码"), max_length=300, null=True, blank=True)
+    name = models.CharField(
+        verbose_name=_("名称"),
+        max_length=300,
+        null=True,
+        blank=True,
+    )
+    code = models.CharField(
+        verbose_name=_("编码"),
+        max_length=300,
+        null=True,
+        blank=True,
+    )
     identifier = models.UUIDField(
         verbose_name=_("唯一标识"),
         null=True,
@@ -39,11 +49,7 @@ class MAPDFCollection(models.Model):
         verbose_name_plural = _("PDF合集")
 
     def __str__(self):
-        if self.name and len(self.name) > 0:
-            text = str(self.id) + ". " + str(self.name)
-        else:
-            text = str(self.id)
-        return text
+        return f"{self.id}. {self.name}"
 
 
 @gen_upload_to
@@ -56,8 +62,12 @@ class MAPDF(models.Model):
 
     pdf = models.FileField(verbose_name=_("PDF"), upload_to=pdfs, null=True, blank=True)
     url = models.URLField(verbose_name=_("图片链接"), null=True, blank=True)
-    download_url = models.URLField(verbose_name=_("图片下载链接"), null=True, blank=True)
-    name = models.CharField(verbose_name=_("名称"), max_length=300, null=True, blank=True)
+    download_url = models.URLField(
+        verbose_name=_("图片下载链接"), null=True, blank=True
+    )
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=300, null=True, blank=True
+    )
     width = models.FloatField(verbose_name=_("宽度"), null=True, blank=True)
     height = models.FloatField(verbose_name=_("高度"), null=True, blank=True)
 
@@ -68,7 +78,9 @@ class MAPDF(models.Model):
         verbose_name=_("更新时间"), null=True, blank=True, auto_now_add=True
     )
     description = models.TextField(verbose_name=_("简介"), null=True, blank=True)
-    path = models.CharField(verbose_name=_("路径"), max_length=300, null=True, blank=True)
+    path = models.CharField(
+        verbose_name=_("路径"), max_length=300, null=True, blank=True
+    )
     cdn_domain = models.CharField(
         verbose_name=_("CDN域名"), max_length=300, null=True, blank=True
     )
@@ -125,20 +137,21 @@ class MAPDF(models.Model):
         verbose_name_plural = _("PDF")
 
     def __str__(self):
-        if self.name and len(self.name) > 0:
-            text = str(self.id) + ". " + str(self.name)
-        else:
-            text = str(self.id)
-        if self.pdf != None and self.pdf != "":
-            text = text + "[已下载]"
-        return text
+        downloaded_text = ""
+        if bool(self.pdf) == True:
+            downloaded_text = " [已下载]"
+        return f"{self.id}. {self.name}{downloaded_text}"
 
 
 class MAImageCollection(models.Model):
     id = models.BigAutoField(primary_key=True)
 
-    name = models.CharField(verbose_name=_("名称"), max_length=300, null=True, blank=True)
-    code = models.CharField(verbose_name=_("编码"), max_length=300, null=True, blank=True)
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=300, null=True, blank=True
+    )
+    code = models.CharField(
+        verbose_name=_("编码"), max_length=300, null=True, blank=True
+    )
     identifier = models.UUIDField(
         verbose_name=_("唯一标识"),
         null=True,
@@ -155,11 +168,7 @@ class MAImageCollection(models.Model):
         app_label = "xy_django_app_resource"
 
     def __str__(self):
-        if self.name and len(self.name) > 0:
-            text = str(self.id) + ". " + str(self.name)
-        else:
-            text = str(self.id)
-        return text
+        return f"{self.id}. {self.name}"
 
 
 @gen_upload_to
@@ -173,8 +182,12 @@ class MAImage(models.Model):
         verbose_name=_("图片"), upload_to=images, null=True, blank=True
     )
     url = models.URLField(verbose_name=_("图片链接"), null=True, blank=True)
-    download_url = models.URLField(verbose_name=_("图片下载链接"), null=True, blank=True)
-    name = models.CharField(verbose_name=_("名称"), max_length=300, null=True, blank=True)
+    download_url = models.URLField(
+        verbose_name=_("图片下载链接"), null=True, blank=True
+    )
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=300, null=True, blank=True
+    )
     width = models.FloatField(verbose_name=_("宽度"), null=True, blank=True)
     height = models.FloatField(verbose_name=_("高度"), null=True, blank=True)
     create_at = models.DateTimeField(
@@ -184,7 +197,9 @@ class MAImage(models.Model):
         verbose_name=_("更新时间"), null=True, blank=True, auto_now_add=True
     )
     description = models.TextField(verbose_name=_("简介"), null=True, blank=True)
-    path = models.CharField(verbose_name=_("路径"), max_length=300, null=True, blank=True)
+    path = models.CharField(
+        verbose_name=_("路径"), max_length=300, null=True, blank=True
+    )
     cdn_domain = models.CharField(
         verbose_name=_("CDN域名"), max_length=300, null=True, blank=True
     )
@@ -242,20 +257,21 @@ class MAImage(models.Model):
         app_label = "xy_django_app_resource"
 
     def __str__(self):
-        if self.name and len(self.name) > 0:
-            text = str(self.id) + ". " + str(self.name)
-        else:
-            text = str(self.id)
-        if self.image != None and self.image != "":
-            text = text + "[已下载]"
-        return text
+        downloaded_text = ""
+        if bool(self.image) == True:
+            downloaded_text = " [已下载]"
+        return f"{self.id}. {self.name}{downloaded_text}"
 
 
 class MAPackageCollection(models.Model):
     id = models.BigAutoField(primary_key=True)
 
-    name = models.CharField(verbose_name=_("名称"), max_length=300, null=True, blank=True)
-    code = models.CharField(verbose_name=_("编码"), max_length=300, null=True, blank=True)
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=300, null=True, blank=True
+    )
+    code = models.CharField(
+        verbose_name=_("编码"), max_length=300, null=True, blank=True
+    )
 
     identifier = models.UUIDField(
         verbose_name=_("唯一标识"),
@@ -273,11 +289,7 @@ class MAPackageCollection(models.Model):
         app_label = "xy_django_app_resource"
 
     def __str__(self):
-        if self.name and len(self.name) > 0:
-            text = str(self.id) + ". " + str(self.name)
-        else:
-            text = str(self.id)
-        return text
+        return f"{self.id}. {self.name}"
 
 
 @gen_upload_to
@@ -295,7 +307,9 @@ class MAPackage(models.Model):
     download_url = models.URLField(
         verbose_name=_("包下载链接"), null=True, blank=True, unique=True
     )
-    name = models.CharField(verbose_name=_("名称"), max_length=300, null=True, blank=True)
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=300, null=True, blank=True
+    )
     width = models.FloatField(verbose_name=_("宽度"), null=True, blank=True)
     height = models.FloatField(verbose_name=_("高度"), null=True, blank=True)
     create_at = models.DateTimeField(
@@ -305,7 +319,9 @@ class MAPackage(models.Model):
         verbose_name=_("更新时间"), null=True, blank=True, auto_now_add=True
     )
     description = models.TextField(verbose_name=_("简介"), null=True, blank=True)
-    path = models.CharField(verbose_name=_("路径"), max_length=300, null=True, blank=True)
+    path = models.CharField(
+        verbose_name=_("路径"), max_length=300, null=True, blank=True
+    )
     cdn_domain = models.CharField(
         verbose_name=_("CDN域名"), max_length=300, null=True, blank=True
     )
@@ -333,13 +349,10 @@ class MAPackage(models.Model):
         app_label = "xy_django_app_resource"
 
     def __str__(self):
-        if self.name and len(self.name) > 0:
-            text = str(self.id) + ". " + str(self.name)
-        else:
-            text = str(self.id)
-        if self.package != None:
-            text = text + "[已下载]"
-        return text
+        downloaded_text = ""
+        if bool(self.package) == True:
+            downloaded_text = " [已下载]"
+        return f"{self.id}. {self.name}{downloaded_text}"
 
 
 @gen_upload_to
@@ -358,7 +371,9 @@ class MARequest(models.Model):
     body_text = models.TextField(verbose_name=_("Body_Text"), null=True, blank=True)
     cookie = models.TextField(verbose_name=_("Cookie"), null=True, blank=True)
     header = models.TextField(verbose_name=_("头部信息"), null=True, blank=True)
-    name = models.CharField(verbose_name=_("名称"), max_length=300, null=True, blank=True)
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=300, null=True, blank=True
+    )
     identifier = models.UUIDField(
         verbose_name=_("唯一标识"),
         null=True,
@@ -371,7 +386,9 @@ class MARequest(models.Model):
     encoding = models.CharField(
         verbose_name=_("编码方式"), max_length=300, null=True, blank=True
     )
-    priority = models.IntegerField(verbose_name=_("请求的优先级"), null=True, blank=True)
+    priority = models.IntegerField(
+        verbose_name=_("请求的优先级"), null=True, blank=True
+    )
     # 默认为False，若设置为True，这次请求将不会过滤（不会加入到去重队列中），可以多次执行相同的请求
     dont_filter = models.BooleanField(verbose_name=_("重复请求"), null=True, blank=True)
     meta = models.TextField(verbose_name=_("meta"), null=True, blank=True)
@@ -383,10 +400,7 @@ class MARequest(models.Model):
         app_label = "xy_django_app_resource"
 
     def __str__(self):
-        if self.name and len(self.name) > 0:
-            return str(self.id) + ". " + str(self.name)
-        else:
-            return str(self.id)
+        return f"{self.id}. {self.name}"
 
 
 @gen_upload_to
@@ -403,7 +417,9 @@ class MAResponse(models.Model):
     )
     body_text = models.TextField(verbose_name=_("Body_Text"), null=True, blank=True)
     headers = models.TextField(verbose_name=_("headers"), null=True, blank=True)
-    name = models.CharField(verbose_name=_("名称"), max_length=300, null=True, blank=True)
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=300, null=True, blank=True
+    )
     identifier = models.UUIDField(
         verbose_name=_("唯一标识"),
         null=True,
@@ -421,10 +437,7 @@ class MAResponse(models.Model):
         app_label = "xy_django_app_resource"
 
     def __str__(self):
-        if self.name and len(self.name) > 0:
-            return str(self.id) + ". " + str(self.name)
-        else:
-            return str(self.id)
+        return f"{self.id}. {self.name}"
 
 
 @gen_upload_to
@@ -439,8 +452,12 @@ class MAHTMLFile(models.Model):
         verbose_name=_("HTML文件"), upload_to=html_files, null=True, blank=True
     )
     url = models.URLField(verbose_name=_("HTML文件链接"), null=True, blank=True)
-    download_url = models.URLField(verbose_name=_("HTML文件下载链接"), null=True, blank=True)
-    name = models.CharField(verbose_name=_("名称"), max_length=300, null=True, blank=True)
+    download_url = models.URLField(
+        verbose_name=_("HTML文件下载链接"), null=True, blank=True
+    )
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=300, null=True, blank=True
+    )
     create_at = models.DateTimeField(
         verbose_name=_("创建时间"), null=True, blank=True, auto_now_add=True
     )
@@ -448,7 +465,9 @@ class MAHTMLFile(models.Model):
         verbose_name=_("更新时间"), null=True, blank=True, auto_now_add=True
     )
     description = models.TextField(verbose_name=_("简介"), null=True, blank=True)
-    path = models.CharField(verbose_name=_("路径"), max_length=300, null=True, blank=True)
+    path = models.CharField(
+        verbose_name=_("路径"), max_length=300, null=True, blank=True
+    )
     cdn_domain = models.CharField(
         verbose_name=_("CDN域名"), max_length=300, null=True, blank=True
     )
@@ -468,17 +487,18 @@ class MAHTMLFile(models.Model):
         app_label = "xy_django_app_resource"
 
     def __str__(self):
-        if self.name and len(self.name) > 0:
-            return str(self.id) + ". " + str(self.name)
-        else:
-            return str(self.id)
+        return f"{self.id}. {self.name}"
 
 
 class MAVideoCollection(models.Model):
     id = models.BigAutoField(primary_key=True)
 
-    name = models.CharField(verbose_name=_("名称"), max_length=300, null=True, blank=True)
-    code = models.CharField(verbose_name=_("编码"), max_length=300, null=True, blank=True)
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=300, null=True, blank=True
+    )
+    code = models.CharField(
+        verbose_name=_("编码"), max_length=300, null=True, blank=True
+    )
     identifier = models.UUIDField(
         verbose_name=_("唯一标识"),
         null=True,
@@ -495,11 +515,7 @@ class MAVideoCollection(models.Model):
         app_label = "xy_django_app_resource"
 
     def __str__(self):
-        if self.name and len(self.name) > 0:
-            text = str(self.id) + ". " + str(self.name)
-        else:
-            text = str(self.id)
-        return text
+        return f"{self.id}. {self.name}"
 
 
 @gen_upload_to
@@ -521,8 +537,12 @@ class MAVideo(models.Model):
         verbose_name=_("视频"), upload_to=videos, null=True, blank=True
     )
     url = models.URLField(verbose_name=_("视频链接"), null=True, blank=True)
-    download_url = models.URLField(verbose_name=_("视频下载链接"), null=True, blank=True)
-    name = models.CharField(verbose_name=_("名称"), max_length=300, null=True, blank=True)
+    download_url = models.URLField(
+        verbose_name=_("视频下载链接"), null=True, blank=True
+    )
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=300, null=True, blank=True
+    )
     width = models.FloatField(verbose_name=_("宽度"), null=True, blank=True)
     height = models.FloatField(verbose_name=_("高度"), null=True, blank=True)
 
@@ -533,7 +553,9 @@ class MAVideo(models.Model):
         verbose_name=_("更新时间"), null=True, blank=True, auto_now_add=True
     )
     description = models.TextField(verbose_name=_("简介"), null=True, blank=True)
-    path = models.CharField(verbose_name=_("路径"), max_length=300, null=True, blank=True)
+    path = models.CharField(
+        verbose_name=_("路径"), max_length=300, null=True, blank=True
+    )
     cdn_domain = models.CharField(
         verbose_name=_("CDN域名"), max_length=300, null=True, blank=True
     )
@@ -590,20 +612,21 @@ class MAVideo(models.Model):
         app_label = "xy_django_app_resource"
 
     def __str__(self):
-        if self.name and len(self.name) > 0:
-            text = str(self.id) + ". " + str(self.name)
-        else:
-            text = str(self.id)
+        downloaded_text = ""
         if bool(self.video) == True:
-            text = text + "[已下载]"
-        return text
+            downloaded_text = " [已下载]"
+        return f"{self.id}. {self.name}{downloaded_text}"
 
 
 class MAAudioCollection(models.Model):
     id = models.BigAutoField(primary_key=True)
 
-    name = models.CharField(verbose_name=_("名称"), max_length=300, null=True, blank=True)
-    code = models.CharField(verbose_name=_("编码"), max_length=300, null=True, blank=True)
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=300, null=True, blank=True
+    )
+    code = models.CharField(
+        verbose_name=_("编码"), max_length=300, null=True, blank=True
+    )
     identifier = models.UUIDField(
         verbose_name=_("唯一标识"),
         null=True,
@@ -620,11 +643,7 @@ class MAAudioCollection(models.Model):
         app_label = "xy_django_app_resource"
 
     def __str__(self):
-        if self.name and len(self.name) > 0:
-            text = str(self.id) + ". " + str(self.name)
-        else:
-            text = str(self.id)
-        return text
+        return f"{self.id}. {self.name}"
 
 
 @gen_upload_to
@@ -639,8 +658,12 @@ class MAAudio(models.Model):
         verbose_name=_("音频"), upload_to=audios, null=True, blank=True
     )
     url = models.URLField(verbose_name=_("音频链接"), null=True, blank=True)
-    download_url = models.URLField(verbose_name=_("音频下载链接"), null=True, blank=True)
-    name = models.CharField(verbose_name=_("名称"), max_length=300, null=True, blank=True)
+    download_url = models.URLField(
+        verbose_name=_("音频下载链接"), null=True, blank=True
+    )
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=300, null=True, blank=True
+    )
     width = models.FloatField(verbose_name=_("宽度"), null=True, blank=True)
     height = models.FloatField(verbose_name=_("高度"), null=True, blank=True)
     duration = models.TimeField(verbose_name=_("时间长度"), null=True, blank=True)
@@ -652,7 +675,9 @@ class MAAudio(models.Model):
         verbose_name=_("更新时间"), null=True, blank=True, auto_now_add=True
     )
     description = models.TextField(verbose_name=_("简介"), null=True, blank=True)
-    path = models.CharField(verbose_name=_("路径"), max_length=300, null=True, blank=True)
+    path = models.CharField(
+        verbose_name=_("路径"), max_length=300, null=True, blank=True
+    )
     cdn_domain = models.CharField(
         verbose_name=_("CDN域名"), max_length=300, null=True, blank=True
     )
@@ -694,20 +719,21 @@ class MAAudio(models.Model):
         app_label = "xy_django_app_resource"
 
     def __str__(self):
-        if self.name and len(self.name) > 0:
-            text = str(self.id) + ". " + str(self.name)
-        else:
-            text = str(self.id)
+        downloaded_text = ""
         if bool(self.audio) == True:
-            text = text + "[已下载]"
-        return text
+            downloaded_text = " [已下载]"
+        return f"{self.id}. {self.name}{downloaded_text}"
 
 
 class MATextCollection(models.Model):
     id = models.BigAutoField(primary_key=True)
 
-    name = models.CharField(verbose_name=_("名称"), max_length=300, null=True, blank=True)
-    code = models.CharField(verbose_name=_("编码"), max_length=300, null=True, blank=True)
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=300, null=True, blank=True
+    )
+    code = models.CharField(
+        verbose_name=_("编码"), max_length=300, null=True, blank=True
+    )
 
     class Meta:
         abstract = True
@@ -716,11 +742,7 @@ class MATextCollection(models.Model):
         app_label = "xy_django_app_resource"
 
     def __str__(self):
-        if self.name and len(self.name) > 0:
-            text = str(self.id) + ". " + str(self.name)
-        else:
-            text = str(self.id)
-        return text
+        return f"{self.id}. {self.name}"
 
 
 class MAText(models.Model):
@@ -734,14 +756,18 @@ class MAText(models.Model):
         app_label = "xy_django_app_resource"
 
     def __str__(self):
-        return "{id}. {text}".format(id=self.id, text=self.text)
+        return f"{self.id}. {self.name}"
 
 
 class MAFileCollection(models.Model):
     id = models.BigAutoField(primary_key=True)
 
-    name = models.CharField(verbose_name=_("名称"), max_length=300, null=True, blank=True)
-    code = models.CharField(verbose_name=_("编码"), max_length=300, null=True, blank=True)
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=300, null=True, blank=True
+    )
+    code = models.CharField(
+        verbose_name=_("编码"), max_length=300, null=True, blank=True
+    )
 
     identifier = models.UUIDField(
         verbose_name=_("唯一标识"),
@@ -759,11 +785,7 @@ class MAFileCollection(models.Model):
         app_label = "xy_django_app_resource"
 
     def __str__(self):
-        if self.name and len(self.name) > 0:
-            text = str(self.id) + ". " + str(self.name)
-        else:
-            text = str(self.id)
-        return text
+        return f"{self.id}. {self.name}"
 
 
 @gen_upload_to
@@ -781,7 +803,9 @@ class MAFile(models.Model):
     download_url = models.URLField(
         verbose_name=_("文件下载链接"), null=True, blank=True, unique=True
     )
-    name = models.CharField(verbose_name=_("名称"), max_length=300, null=True, blank=True)
+    name = models.CharField(
+        verbose_name=_("名称"), max_length=300, null=True, blank=True
+    )
     width = models.FloatField(verbose_name=_("宽度"), null=True, blank=True)
     height = models.FloatField(verbose_name=_("高度"), null=True, blank=True)
     create_at = models.DateTimeField(
@@ -791,7 +815,9 @@ class MAFile(models.Model):
         verbose_name=_("更新时间"), null=True, blank=True, auto_now_add=True
     )
     description = models.TextField(verbose_name=_("简介"), null=True, blank=True)
-    path = models.CharField(verbose_name=_("路径"), max_length=300, null=True, blank=True)
+    path = models.CharField(
+        verbose_name=_("路径"), max_length=300, null=True, blank=True
+    )
     cdn_domain = models.CharField(
         verbose_name=_("CDN域名"), max_length=300, null=True, blank=True
     )
@@ -819,10 +845,7 @@ class MAFile(models.Model):
         app_label = "xy_django_app_resource"
 
     def __str__(self):
-        if self.name and len(self.name) > 0:
-            text = str(self.id) + ". " + str(self.name)
-        else:
-            text = str(self.id)
-        if self.file != None:
-            text = text + "[已下载]"
-        return text
+        downloaded_text = ""
+        if bool(self.file) == True:
+            downloaded_text = " [已下载]"
+        return f"{self.id}. {self.name}{downloaded_text}"

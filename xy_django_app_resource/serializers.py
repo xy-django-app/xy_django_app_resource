@@ -1,12 +1,12 @@
 # -*- coding: UTF-8 -*-
-__author__ = "helios"
+__author__ = "余洋"
 __doc__ = "serializers"
 """
   * @File    :   serializers.py
   * @Time    :   2023/05/01 19:13:20
   * @Author  :   helios
   * @Version :   1.0
-  * @Contact :   yuyang.0515@qq.com
+  * @Contact :   yuyangit.0515@qq.com
   * @License :   (C)Copyright 2019-2023, Ship of Ocean
   * @Desc    :   None
 """

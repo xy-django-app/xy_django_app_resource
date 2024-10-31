@@ -3,9 +3,6 @@
 from django.contrib import admin
 from .models import *
 
-# Register your models here.
-from django.utils.safestring import mark_safe
-
 
 @admin.register(MPDFCollection)
 class APDFCollection(admin.ModelAdmin):
@@ -25,6 +22,7 @@ class AImageCollection(admin.ModelAdmin):
         "images",
     ]
 
+
 @admin.register(MImage)
 class AImage(admin.ModelAdmin):
     list_display = (
@@ -35,82 +33,65 @@ class AImage(admin.ModelAdmin):
     readonly_fields = ("icon_preview",)
     search_fields = ["id", "name", "identifier"]
 
-@admin.register(MAPackageCollection)
+
+@admin.register(MPackageCollection)
 class APackageCollection(admin.ModelAdmin):
     filter_horizontal = [
         "packages",
     ]
 
 
-@admin.register(MAPackage)
+@admin.register(MPackage)
 class APackage(admin.ModelAdmin):
     pass
 
 
-@admin.register(MARequest)
+@admin.register(MRequest)
 class ARequest(admin.ModelAdmin):
     pass
 
 
-
-
-class Response(admin.ModelAdmin):
+@admin.register(MResponse)
+class AResponse(admin.ModelAdmin):
     pass
 
 
-admin.site.register(Response, ResponseAdmin)
-
-
-class HTMLFile(admin.ModelAdmin):
+@admin.register(MHTMLFile)
+class AHTMLFile(admin.ModelAdmin):
     pass
 
 
-admin.site.register(HTMLFile, HTMLFileAdmin)
-
-
-class VideoCollection(admin.ModelAdmin):
+@admin.register(MVideoCollection)
+class AVideoCollection(admin.ModelAdmin):
     filter_horizontal = [
         "videos",
     ]
 
 
-admin.site.register(VideoCollection, VideoCollectionAdmin)
-
-
-class Video(admin.ModelAdmin):
+@admin.register(MVideo)
+class AVideo(admin.ModelAdmin):
     pass
 
 
-admin.site.register(Video, VideoAdmin)
-
-
+@admin.register(MAudioCollection)
 class AudioCollection(admin.ModelAdmin):
     filter_horizontal = [
         "audios",
     ]
 
 
-admin.site.register(AudioCollection, AudioCollectionAdmin)
-
-
+@admin.register(MAudio)
 class Audio(admin.ModelAdmin):
     pass
 
 
-admin.site.register(Audio, AudioAdmin)
-
-
+@admin.register(MTextCollection)
 class TextCollection(admin.ModelAdmin):
     filter_horizontal = [
         "texts",
     ]
 
 
-admin.site.register(TextCollection, TextCollectionAdmin)
-
-
+@admin.register(MText)
 class Text(admin.ModelAdmin):
     pass
-
-
-admin.site.register(Text, TextAdmin)
