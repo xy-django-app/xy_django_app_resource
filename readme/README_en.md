@@ -50,8 +50,7 @@ INSTALLED_APPS = [
     "xy_django_app_resource",
     "Demo",
     "Media",
-    "Resource",
-
+]
 ```
 
 - ###### 2. 运行项目
@@ -88,7 +87,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "xy_django_app_resource",
     "Demo",
     "Media",
     "Resource",

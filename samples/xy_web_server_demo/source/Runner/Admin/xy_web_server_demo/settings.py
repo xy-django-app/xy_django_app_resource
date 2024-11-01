@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "Demo",
     "Media",
-    "Information",
+    # "xy_django_app_resource",
     "Resource",
 ]
 
