@@ -30,16 +30,13 @@ pip install xy_django_app_resource
 
 ## 使用
 
-#### 1. 创建Resource模块
-> 操作 [样例工程](./samples/xy_web_server_demo/)
 
-```bash
-# bash
-xy_web_server -w django startapp Resource
-# Resource 模块创建在 source/Runner/Admin/Resource 
-```
+##### 1. 直接引入
 
-#### 2. 在样例工程中的[settings.py](./samples/xy_web_server_demo/source/Runner/Admin/xy_web_server_demo/settings.py)设置如下
+- ###### 1. 设置全局配置
+
+在Django项目中的settings.py文件中加入如下配置
+例如: [settings.py](./samples/xy_web_server_demo/source/Runner/Admin/xy_web_server_demo/settings.py)
 
 ```python
 # settings.py
@@ -51,6 +48,48 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "xy_django_app_resource",
+    "Demo",
+    "Media",
+    "Resource",
+
+```
+
+- ###### 2. 运行项目
+
+```bash
+xy_web_server -w django start
+# 启动工程后访问 http://127.0.0.1:8401/admin 验证资源管理系统
+```
+
+##### 2. 自定义
+
+- ###### 1. 创建Resource模块
+
+> 操作 [样例工程](./samples/xy_web_server_demo/)
+
+```bash
+# bash
+xy_web_server -w django startapp Resource
+# Resource 模块创建在 source/Runner/Admin/Resource 
+```
+
+- ###### 2. 设置全局配置
+
+在Django项目中的settings.py文件中加入如下配置
+例如: [settings.py](./samples/xy_web_server_demo/source/Runner/Admin/xy_web_server_demo/settings.py)
+
+```python
+# settings.py
+
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "xy_django_app_resource",
     "Demo",
     "Media",
     "Resource",
@@ -58,7 +97,7 @@ INSTALLED_APPS = [
 
 ```
 
-#### 3. 在[Resource](./samples/xy_web_server_demo/source/Runner/Admin/Resource)模块的[models.py](./samples/xy_web_server_demo/source/Runner/Admin/Resource/models.py)文件中加入如下代码
+- ###### 3. 在[Resource](./samples/xy_web_server_demo/source/Runner/Admin/Resource)模块的[models.py](./samples/xy_web_server_demo/source/Runner/Admin/Resource/models.py)文件中加入如下代码
 
 ```python
 # models.py
@@ -103,9 +142,10 @@ class MImage(MAImage):
     def __str__(self):
         return f"{self.id}. {self.identifier}"
 
+
 ```
 
-#### 4. 在[Resource](./samples/xy_web_server_demo/source/Runner/Admin/Resource)模块的[admin.py](./samples/xy_web_server_demo/source/Runner/Admin/Resource/admin.py)文件中加入如下代码
+- ###### 4. 在[Resource](./samples/xy_web_server_demo/source/Runner/Admin/Resource)模块的[admin.py](./samples/xy_web_server_demo/source/Runner/Admin/Resource/admin.py)文件中加入如下代码
 
 ```python
 # admin.py
@@ -137,7 +177,7 @@ class AImage(admin.ModelAdmin):
 
 ```
 
-#### 5. 运行项目
+- ###### 5. 运行项目
 
 ```bash
 xy_web_server -w django start

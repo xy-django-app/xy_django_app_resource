@@ -15,7 +15,7 @@
 
 ## 说明
 
-后台账户数据模型.
+通用资源数据模型.
 
 ## 源码仓库
 
@@ -31,17 +31,12 @@ pip install xy_django_app_resource
 
 ## 使用
 
-#### 1. 创建Resource模块
+##### 1. 直接引入
 
-> 操作 [样例工程](../samples/xy_web_server_demo/)
+- ###### 1. 设置全局配置
 
-```bash
-# bash
-xy_web_server -w django startapp Resource
-# Resource 模块创建在 source/Runner/Admin/Resource 
-```
-
-#### 2. 在样例工程中的[settings.py](../samples/xy_web_server_demo/source/Runner/Admin/xy_web_server_demo/settings.py)设置如下
+在Django项目中的settings.py文件中加入如下配置
+例如: [settings.py](../samples/xy_web_server_demo/source/Runner/Admin/xy_web_server_demo/settings.py)
 
 ```python
 # settings.py
@@ -53,6 +48,48 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "xy_django_app_resource",
+    "Demo",
+    "Media",
+    "Resource",
+
+```
+
+- ###### 2. 运行项目
+
+```bash
+xy_web_server -w django start
+# 启动工程后访问 http://127.0.0.1:8401/admin 验证资源管理系统
+```
+
+##### 2. 自定义
+
+- ###### 1. 创建Resource模块
+
+> 操作 [样例工程](../samples/xy_web_server_demo/)
+
+```bash
+# bash
+xy_web_server -w django startapp Resource
+# Resource 模块创建在 source/Runner/Admin/Resource 
+```
+
+- ###### 2. 设置全局配置
+
+在Django项目中的settings.py文件中加入如下配置
+例如: [settings.py](../samples/xy_web_server_demo/source/Runner/Admin/xy_web_server_demo/settings.py)
+
+```python
+# settings.py
+
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "xy_django_app_resource",
     "Demo",
     "Media",
     "Resource",
@@ -60,39 +97,91 @@ INSTALLED_APPS = [
 
 ```
 
-#### 3. 在[Resource](../samples/xy_web_server_demo/source/Runner/Admin/Resource)模块的[models.py](../samples/xy_web_server_demo/source/Runner/Admin/Resource/models.py)文件中加入如下代码
+- ###### 3. 在[Resource](../samples/xy_web_server_demo/source/Runner/Admin/Resource)模块的[models.py](../samples/xy_web_server_demo/source/Runner/Admin/Resource/models.py)文件中加入如下代码
 
 ```python
 # models.py
-from xy_django_app_resource.abstracts import MARegion
-from django.utils.translation import gettext_lazy as _
 
-class MRegion(MARegion):
+import uuid
+from django.utils.translation import gettext_lazy as _
+from django.db import models
+from xy_django_app_resource.abstracts import MAImage
+
+
+class MImage(MAImage):
+    id = models.BigAutoField(primary_key=True)
+    create_at = models.DateTimeField(
+        verbose_name=_("创建时间"),
+        auto_now_add=True,
+        editable=True,
+    )
+    update_at = models.DateTimeField(
+        verbose_name=_("更新时间"),
+        auto_now_add=True,
+        editable=True,
+    )
+    identifier = models.UUIDField(
+        verbose_name=_("唯一标识"),
+        default=uuid.uuid4,
+        editable=True,
+        unique=True,
+        null=True,
+    )
+    is_active = models.BooleanField(
+        verbose_name=_("是否启用"),
+        null=True,
+        blank=True,
+        default=False,
+    )
+
     class Meta:
+        verbose_name = _("图片")
+        verbose_name_plural = _("图片")
         app_label = "Resource"
-        verbose_name = _("地理信息")
-        verbose_name_plural = _("地理信息")
+
+    def __str__(self):
+        return f"{self.id}. {self.identifier}"
+
 
 ```
 
-#### 4. 在[Resource](../samples/xy_web_server_demo/source/Runner/Admin/Resource)模块的[admin.py](../samples/xy_web_server_demo/source/Runner/Admin/Resource/admin.py)文件中加入如下代码
+- ###### 4. 在[Resource](../samples/xy_web_server_demo/source/Runner/Admin/Resource)模块的[admin.py](../samples/xy_web_server_demo/source/Runner/Admin/Resource/admin.py)文件中加入如下代码
 
 ```python
 # admin.py
 from django.contrib import admin
-from .models import MRegion
+from .models import MImage
 
-@admin.register(MRegion)
-class ARegion(admin.ModelAdmin):
-    pass
+@admin.register(MImage)
+class AImage(admin.ModelAdmin):
+    list_per_page = 20
+    filter_horizontal = []
+    list_display_links = [
+        "id",
+        "identifier",
+        "update_at",
+        "create_at",
+    ]
+    list_display = [
+        "id",
+        "identifier",
+        "update_at",
+        "create_at",
+    ]
+    search_fields = list_display
+    autocomplete_fields = [
+        # "id",
+        # "communicate_at",
+        # "identifier",
+    ]
 
 ```
 
-#### 5. 运行项目
+- ###### 5. 运行项目
 
 ```bash
 xy_web_server -w django start
-# 启动工程后访问 http://127.0.0.1:8401/admin 验证信息管理系统
+# 启动工程后访问 http://127.0.0.1:8401/admin 验证资源管理系统
 ```
 
 ##### 运行 [样例工程](../samples/xy_web_server_demo)
