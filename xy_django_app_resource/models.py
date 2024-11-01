@@ -15,6 +15,8 @@ class MPDFCollection(MAPDFCollection):
 
     class Meta:
         app_label = "xy_django_app_resource"
+        verbose_name = _("PDF合集")
+        verbose_name_plural = _("PDF合集")
 
 
 class MPDF(MAPDF):
@@ -29,6 +31,8 @@ class MPDF(MAPDF):
 
     class Meta:
         app_label = "xy_django_app_resource"
+        verbose_name = _("PDF")
+        verbose_name_plural = _("PDF")
 
 
 class MImageCollection(MAImageCollection):
@@ -57,6 +61,8 @@ class MImageCollection(MAImageCollection):
 
     class Meta:
         app_label = "xy_django_app_resource"
+        verbose_name = _("图片合集")
+        verbose_name_plural = _("图片合集")
 
 
 class MImage(MAImage):
@@ -71,6 +77,8 @@ class MImage(MAImage):
 
     class Meta:
         app_label = "xy_django_app_resource"
+        verbose_name = _("图片")
+        verbose_name_plural = _("图片")
 
 
 class MPackageCollection(MAPackageCollection):
@@ -99,6 +107,8 @@ class MPackageCollection(MAPackageCollection):
 
     class Meta:
         app_label = "xy_django_app_resource"
+        verbose_name = _("包合集")
+        verbose_name_plural = _("包合集")
 
 
 class MPackage(MAPackage):
@@ -129,6 +139,8 @@ class MPackage(MAPackage):
 
     class Meta:
         app_label = "xy_django_app_resource"
+        verbose_name = _("包")
+        verbose_name_plural = _("包")
 
 
 class MRequest(MARequest):
@@ -143,11 +155,15 @@ class MRequest(MARequest):
 
     class Meta:
         app_label = "xy_django_app_resource"
+        verbose_name = _("请求")
+        verbose_name_plural = _("请求")
 
 
 class MResponse(MAResponse):
     class Meta:
         app_label = "xy_django_app_resource"
+        verbose_name = _("响应")
+        verbose_name_plural = _("响应")
 
 
 class MHTMLFile(MAHTMLFile):
@@ -162,6 +178,8 @@ class MHTMLFile(MAHTMLFile):
 
     class Meta:
         app_label = "xy_django_app_resource"
+        verbose_name = _("HTML文件")
+        verbose_name_plural = _("HTML文件")
 
 
 class MVideoCollection(MAVideoCollection):
@@ -182,6 +200,8 @@ class MVideoCollection(MAVideoCollection):
 
     class Meta:
         app_label = "xy_django_app_resource"
+        verbose_name = _("视频合集")
+        verbose_name_plural = _("视频合集")
 
 
 class MVideo(MAVideo):
@@ -212,6 +232,8 @@ class MVideo(MAVideo):
 
     class Meta:
         app_label = "xy_django_app_resource"
+        verbose_name = _("视频")
+        verbose_name_plural = _("视频")
 
 
 class MAudioCollection(MAAudioCollection):
@@ -240,6 +262,8 @@ class MAudioCollection(MAAudioCollection):
 
     class Meta:
         app_label = "xy_django_app_resource"
+        verbose_name = _("音频合集")
+        verbose_name_plural = _("音频合集")
 
 
 class MAudio(MAAudio):
@@ -270,6 +294,8 @@ class MAudio(MAAudio):
 
     class Meta:
         app_label = "xy_django_app_resource"
+        verbose_name = _("音频")
+        verbose_name_plural = _("音频")
 
 
 class MTextCollection(MATextCollection):
@@ -282,11 +308,15 @@ class MTextCollection(MATextCollection):
 
     class Meta:
         app_label = "xy_django_app_resource"
+        verbose_name = _("文本合集")
+        verbose_name_plural = _("文本合集")
 
 
 class MText(MAText):
     class Meta:
         app_label = "xy_django_app_resource"
+        verbose_name = _("文本")
+        verbose_name_plural = _("文本")
 
 
 class MFileCollection(MAFileCollection):
@@ -315,6 +345,8 @@ class MFileCollection(MAFileCollection):
 
     class Meta:
         app_label = "xy_django_app_resource"
+        verbose_name = _("文件合集")
+        verbose_name_plural = _("文件合集")
 
 
 class MFile(MAFile):
@@ -345,3 +377,5 @@ class MFile(MAFile):
 
     class Meta:
         app_label = "xy_django_app_resource"
+        verbose_name = _("文件")
+        verbose_name_plural = _("文件")

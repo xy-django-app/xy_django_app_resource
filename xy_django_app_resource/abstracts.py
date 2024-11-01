@@ -165,7 +165,6 @@ class MAImageCollection(models.Model):
         abstract = True
         verbose_name = _("图片合集")
         verbose_name_plural = _("图片合集")
-        app_label = "xy_django_app_resource"
 
     def __str__(self):
         return f"{self.id}. {self.name}"
@@ -254,7 +253,6 @@ class MAImage(models.Model):
         abstract = True
         verbose_name = _("图片")
         verbose_name_plural = _("图片")
-        app_label = "xy_django_app_resource"
 
     def __str__(self):
         downloaded_text = ""
@@ -286,7 +284,6 @@ class MAPackageCollection(models.Model):
         abstract = True
         verbose_name = _("包合集")
         verbose_name_plural = _("包合集")
-        app_label = "xy_django_app_resource"
 
     def __str__(self):
         return f"{self.id}. {self.name}"
@@ -346,7 +343,6 @@ class MAPackage(models.Model):
         abstract = True
         verbose_name = _("包")
         verbose_name_plural = _("包")
-        app_label = "xy_django_app_resource"
 
     def __str__(self):
         downloaded_text = ""
@@ -397,7 +393,6 @@ class MARequest(models.Model):
         abstract = True
         verbose_name = _("请求")
         verbose_name_plural = _("请求")
-        app_label = "xy_django_app_resource"
 
     def __str__(self):
         return f"{self.id}. {self.name}"
@@ -434,7 +429,6 @@ class MAResponse(models.Model):
         abstract = True
         verbose_name = _("响应")
         verbose_name_plural = _("响应")
-        app_label = "xy_django_app_resource"
 
     def __str__(self):
         return f"{self.id}. {self.name}"
@@ -484,7 +478,6 @@ class MAHTMLFile(models.Model):
         abstract = True
         verbose_name = _("HTML文件")
         verbose_name_plural = _("HTML文件")
-        app_label = "xy_django_app_resource"
 
     def __str__(self):
         return f"{self.id}. {self.name}"
@@ -512,7 +505,6 @@ class MAVideoCollection(models.Model):
         abstract = True
         verbose_name = _("视频合集")
         verbose_name_plural = _("视频合集")
-        app_label = "xy_django_app_resource"
 
     def __str__(self):
         return f"{self.id}. {self.name}"
@@ -609,7 +601,6 @@ class MAVideo(models.Model):
         abstract = True
         verbose_name = _("视频")
         verbose_name_plural = _("视频")
-        app_label = "xy_django_app_resource"
 
     def __str__(self):
         downloaded_text = ""
@@ -640,7 +631,6 @@ class MAAudioCollection(models.Model):
         abstract = True
         verbose_name = _("音频合集")
         verbose_name_plural = _("音频合集")
-        app_label = "xy_django_app_resource"
 
     def __str__(self):
         return f"{self.id}. {self.name}"
@@ -716,7 +706,6 @@ class MAAudio(models.Model):
         abstract = True
         verbose_name = _("音频")
         verbose_name_plural = _("音频")
-        app_label = "xy_django_app_resource"
 
     def __str__(self):
         downloaded_text = ""
@@ -739,7 +728,6 @@ class MATextCollection(models.Model):
         abstract = True
         verbose_name = _("文本合集")
         verbose_name_plural = _("文本合集")
-        app_label = "xy_django_app_resource"
 
     def __str__(self):
         return f"{self.id}. {self.name}"
@@ -753,7 +741,6 @@ class MAText(models.Model):
         abstract = True
         verbose_name = _("文本")
         verbose_name_plural = _("文本")
-        app_label = "xy_django_app_resource"
 
     def __str__(self):
         return f"{self.id}. {self.name}"
@@ -782,7 +769,6 @@ class MAFileCollection(models.Model):
         abstract = True
         verbose_name = _("文件合集")
         verbose_name_plural = _("文件合集")
-        app_label = "xy_django_app_resource"
 
     def __str__(self):
         return f"{self.id}. {self.name}"
@@ -842,7 +828,6 @@ class MAFile(models.Model):
         abstract = True
         verbose_name = _("文件")
         verbose_name_plural = _("文件")
-        app_label = "xy_django_app_resource"
 
     def __str__(self):
         downloaded_text = ""
