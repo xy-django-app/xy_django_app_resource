@@ -20,7 +20,8 @@
 ## 源码仓库
 
 - <a href="https://github.com/xy-django-app/xy_django_app_resource.git" target="_blank">Github地址</a>  
-- <a href="https://gitee.com/xy-django-app/xy_django_app_resource.git" target="_blank">Gitee地址</a>
+- <a href="https://gitee.com/xy-opensource/xy_django_app_resource.git" target="_blank">Gitee地址</a>
+- <a href="https://gitcode.com/xy-opensource/xy_django_app_resource.git" target="_blank">GitCode地址</a>  
 
 ## 安装
 
@@ -192,8 +193,8 @@ xy_web_server -w django start
 
 > 样例工程具体使用方式请移步 <b style="color: blue">xy_web_server.git</b> 下列仓库
 > - <a href="https://github.com/xy-web-service/xy_web_server.git" target="_blank">Github地址</a>  
-> - <a href="https://gitee.com/xy-web-service/xy_web_server.git" target="_blank">Gitee地址</a>
-
+> - <a href="https://gitee.com/xy-opensource/xy_web_server.git" target="_blank">Gitee地址</a>
+> - <a href="https://gitcode.com/xy-opensource/xy_web_server.git" target="_blank">GitCode地址</a>  
 
 ## 许可证
 xy_django_app_resource 根据 <木兰宽松许可证, 第2版> 获得许可。有关详细信息，请参阅 [LICENSE](../LICENSE) 文件。

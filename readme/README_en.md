@@ -19,7 +19,8 @@ Generic resource data model.
 ## Source Code Repositories
 
 - <a href="https://github.com/xy-django-app/xy_django_app_resource.git" target="_blank">Github</a>  
-- <a href="https://gitee.com/xy-django-app/xy_django_app_resource.git" target="_blank">Gitee</a>
+- <a href="https://gitee.com/xy-opensource/xy_django_app_resource.git" target="_blank">Gitee</a>  
+- <a href="https://gitcode.com/xy-opensource/xy_django_app_resource.git" target="_blank">GitCode</a>  
 
 ## Installation
 
@@ -191,7 +192,8 @@ xy_web_server -w django start
 
 > For detailed usage of the sample project, please go to the following repository <b style="color: blue">xy_web_server.git</b> 
 > - <a href="https://github.com/xy-web-service/xy_web_server.git" target="_blank">Github</a>  
-> - <a href="https://gitee.com/xy-web-service/xy_web_server.git" target="_blank">Gitee</a>
+> - <a href="https://gitee.com/xy-opensource/xy_web_server.git" target="_blank">Gitee</a>  
+> - <a href="https://gitcode.com/xy-opensource/xy_web_server.git" target="_blank">GitCode</a>  
 
 ## License
 xy_django_app_resource is licensed under the <Mulan Permissive Software License，Version 2>. See the [LICENSE](../LICENSE) file for more info.
